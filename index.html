@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Animated Navbar & Looping Moving Images</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffffd5;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 0;
+            text-align: center;
+            
+        }
+
+        .navbar-top {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            background: rgb(2, 102, 52);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            z-index: 1000;
+            overflow: hidden;
+            height: 90px;
+        }
+
+        .navbar-top .contact,
+        .navbar-top .address {
+            flex: 1;
+            font-size: 18px;
+            white-space: nowrap;
+            text-align: center;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        .navbar-top .contact {
+            animation-name: move-contact;
+        }
+
+        .navbar-top .address {
+            animation-name: move-address;
+        }
+
+        @keyframes move-contact {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes move-address {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .navbar-top .logo {
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-top .logo img {
+            height: 150px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-top .contact,
+            .navbar-top .address {
+                font-size: 14px;
+            }
+
+            .navbar-top .logo img {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-top .contact,
+            .navbar-top .address {
+                font-size: 12px;
+            }
+
+            .navbar-top .logo img {
+                height: 120px;
+                margin-top: -29px;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f3a024;
+            padding: 5px 5px;
+            color: rgb(212, 36, 168);
+            margin-top: 69px;
+            width: 100%;
+            position: fixed;
+            z-index: 1000;
+            
+        }
+
+        .navbar .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin-left: 380px;
+        }
+
+        .navbar .menu li {
+            margin: 20 15px;
+            text-shadow: #ffc012;
+
+        }
+
+        .navbar .menu li a {
+            text-decoration: none;
+            color: rgb(134, 6, 163);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu li a:hover {
+            color: cyan;
+        }
+
+        /* Mobile Menu Button */
+        .navbar .menu-button {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Overlay Menu for Mobile */
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover,
+        .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 60px;
+            
+        }
+ /* Responsive Design */
+ @media (max-width: 768px) {
+            /* Hide the regular menu on mobile */
+            .navbar  {
+               margin-top: 67px;
+            }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Hide the regular menu on mobile */
+            .navbar .menu {
+                display: none;
+            }
+
+            /* Show the menu button on mobile */
+            .navbar .menu-button {
+                display: block;
+                margin: 0 auto; /* Center the button */
+            }
+            .homepage img {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            margin-top: -12px;
+        }
+        }
+
+        @media (max-height: 412px) {
+            .overlay a {
+                font-size: 20px;
+            }
+
+            .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+            .homepage {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            max-height: 550px !important;  
+            margin-top: 130px;
+            object-fit: cover;
+        }
+       
+       
+        }
+
+        /* Services Section */
+        .services {
+            padding: 10px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+     
+        
+
+        .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .menu li {
+            margin: 0 20px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .menu li a:hover {
+            color: rgb(0, 0, 0);
+            text-shadow: black;
+        }
+
+        .homepage {
+            position: relative;
+            margin-top: 123px;
+            object-fit: cover;
+        }
+
+        .homepage img {
+            width: 100%;
+            height: 100%;
+            max-height: 550px;
+            object-fit: cover;
+        }
+
+        .homepage-text {
+    background-color: #615c5cd2;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 40px; /* Adjust the size as needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 5vw; 
+    border: 5px solid #e604e6;
+    
+}
+@media (max-width: 768px) {
+    .homepage-text {
+        font-size: 20px; /* Smaller font size for mobile devices */
+    }
+}
+
+        .slider {
+    height: 80px;
+    margin: 20px 10px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: -80px;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(200px * 18);
+    animation: scroll 40s linear infinite;
+    gap: -12px; /* Positive gap value */
+}
+
+.slide {
+    height: 100px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    flex-shrink: 0; /* Prevents slides from shrinking */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.slide img:hover {
+    transform: scale(1.1);
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+    .slider {
+        height: 40px !important;
+        margin: 10px 5px !important;
+        margin-top: 0px !important;
+    }
+
+    .slide-track {
+        width: calc(100px * 18) !important;
+        gap: 2px !important;
+    }
+
+    .slide {
+        height: 60px !important;
+        width: 100px !important;
+        padding: 5px !important;
+    }
+}
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 9)); }
+        }
+
+        .body2 {
+    padding: 2px;
+    margin-top: 20px;
+}
+
+/* Container for the cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between cards */
+    justify-content: center; /* Center cards horizontally */
+    max-width: 1000px; /* Maximum width of the container */
+    margin: 0 auto; /* Center the container on the page */
+    padding: 10px; /* Padding around the container */
+}
+
+/* Card styling */
+.card {
+    flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on PC */
+    border: 3px solid #ff03ea; /* Border for the card */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow content */
+    transition: transform 0.3s; /* Smooth hover effect */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 5px;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+/* Card header styling */
+.card h3 {
+    margin: 0;
+    padding: 10px;
+    background-color: #ffd560; /* Light gray background */
+    text-align: center;
+    font-size: 18px; /* Default font size for desktop */
+}
+
+/* Card content styling */
+.card-content {
+    padding: 10px;
+    max-height: 4.5em; /* Limit content height initially */
+    overflow: hidden; /* Hide overflow content */
+    transition: max-height 0.3s; /* Smooth expand/collapse transition */
+    font-size: 16px; /* Default font size for desktop */
+}
+
+/* Expanded card content */
+.card.expanded .card-content {
+    max-height: none; /* Show all content when expanded */
+}
+
+/* Tablet: 2 cards per row */
+@media (max-width: 368px) {
+    .card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards per row on tablet */
+    }
+
+    /* Adjust font sizes for tablet */
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .card-content {
+        font-size: 14px;
+    }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 780px) {
+    .card {
+        flex: 1 1 calc(100% - 20px); /* 1 card per row on mobile */
+    }
+
+    /* Adjust font sizes for mobile */
+    .card h3 {
+        font-size: 14px;
+    }
+
+    .card-content {
+        font-size: 12px;
+    }
+}
+.see-more {
+    padding: 10px;
+    background-color: #e604e6;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px; /* Default font size for desktop */
+}
+
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.fullscreen-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-150px * 9)); }
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+    .card h3 {
+        font-size: 16px; /* Smaller font size for mobile */
+    }
+
+    .card-content {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    .see-more {
+        font-size: 12px; /* Smaller font size for mobile */
+    }
+}
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('/w3images/parallax1.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url("/w3images/parallax2.jpg");
+  min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+  background-image: url("/w3images/parallax3.jpg");
+  min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+
+
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu li a:hover {
+    background-color: #555;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown li a {
+    color: black;
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.dropdown li a:hover {
+    background-color: #ddd;
+}
+
+.menu li:hover .dropdown {
+    display: block;
+}
+
+/* Mobile Menu Button */
+.menu-button {
+    display: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Overlay Menu for Mobile */
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #05581e;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay-content a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay-content a:hover {
+    color: #ddd;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 40px;
+}
+
+.mobile-dropdown {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mobile-dropdown li a {
+    color: #ccc;
+    padding: 8px 20px;
+    text-align: left;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+}
+.container6, .container7 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .box {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 20px;
+        width: calc(33.333% - 40px);
+        box-sizing: border-box;
+        overflow: hidden; /* Ensure images don't overflow the box */
+    }
+    .box img {
+        width: 100%; /* Make the image fill the box width */
+        height: 200px; /* Set a fixed height for the images */
+        object-fit: cover; /* Ensure the image covers the area */
+        border-radius: 8px 8px 0 0; /* Rounded corners at the top */
+    }
+    .box h5 {
+        margin-top: 15px;
+        font-size: 1.5em;
+        color: #333;
+    }
+    .box p {
+        font-size: 1em;
+        color: #666;
+    }
+    .box a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .box a:hover {
+        background-color: #0056b3;
+    }
+    @media (max-width: 968px) {
+        .box {
+            width: calc(50% - 40px);
+        }
+    }
+    @media (max-width: 728px) {
+        .box {
+            width: calc(100% - 40px);
+        }
+    }
+        .unicef-work {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .unicef-work h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .unicef-work p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .unicef-work a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .unicef-work a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-top">
+        <div class="contact">Contact: +123456789</div>
+        <div class="logo"><img src="images/logo.png" alt="Logo"></div>
+        <div class="address">Address: Mzuzu, Malawi</div>
+    </nav>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Navbar with Dropdowns</title>
+        <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar" style="background-color: #f3a024; color: #e604e6; padding: 0px;">
+            <ul class="menu">
+                <!-- About Dropdown -->
+                <li><a href="#"><b>Who Are We</b></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Our History</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Services Dropdown -->
+                <li><a href="#"><b>What We Do</b></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Adolescent development</a></li>
+                        <li><a href="#">Health</a></li>
+                        <li><a href="#">Child protection</a></li>
+                        <li><a href="#">Humanitarian emergencies</a></li>
+                        <li><a href="#">Immunization</a></li>
+                        <li><a href="#">Children with disabilities</a></li>
+                        <li><a href="#">Migrant and refugee children</a></li>
+                        <li><a href="#">Climate change and environment</a></li>
+                        <li><a href="#">Nutrition</a></li>
+                        <li><a href="#">Early childhood development</a></li>
+                        <li><a href="#">Social and behaviour change</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Social policy</a></li>
+                        <li><a href="#">Gender</a></li>
+                        <li><a href="#">Water, sanitation and hygiene</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Clients Dropdown -->
+                <li><a href="#"><b>Get Involved</b></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Government Agencies</a></li>
+                        <li><a href="#">Non-Profit Organizations</a></li>
+                        <li><a href="#">Corporate Partners</a></li>
+                        <li><a href="#">Educational Institutions</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Contact Dropdown -->
+                <li><a href="#"><b>Contact</b></a>
+                    <ul class="dropdown">
+                        <div class="w3-content w3-container w3-padding-64" id="contact">
+                            <h3 class="w3-center">WHERE WE WORK</h3>
+                            <p class="w3-center"><em>I'd love your feedback!</em></p>
+                          
+                            <div class="w3-row w3-padding-32 w3-section">
+                              
+                              <div class="w3-col m8 w3-panel">
+                                <div class="w3-large w3-margin-bottom">
+                                  <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Mzuzu, Malawi<br>
+                                  <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
+                                  <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+                                </div>
+                              
+                                <form action="/action_page.php" target="_blank">
+                                  <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                    <div class="w3-half">
+                                      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                                    </div>
+                                    <div class="w3-half">
+                                      <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                                    </div>
+                                  </div>
+                                  <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                                  <button class="w3-button w3-black w3-right w3-section" type="submit">
+                                    <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <div class="menu-button" onclick="openNav()">&#9776;</div>
+        </nav>
+    
+        <!-- Overlay Menu for Mobile -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <!-- About Dropdown for Mobile -->
+                <a href="#">About</a>
+                <ul class="mobile-dropdown">
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Our History</a></li>
+                    <li><a href="#">Our Partners</a></li>
+                </ul>
+    
+                <!-- Services Dropdown for Mobile -->
+                <a href="#">Services</a>
+                <ul class="mobile-dropdown">
+                    <li><a href="#">Adolescent development</a></li>
+                    <li><a href="#">Health</a></li>
+                    <li><a href="#">Child protection</a></li>
+                    <li><a href="#">Humanitarian emergencies</a></li>
+                    <li><a href="#">Immunization</a></li>
+                    <li><a href="#">Children with disabilities</a></li>
+                    <li><a href="#">Migrant and refugee children</a></li>
+                    <li><a href="#">Climate change and environment</a></li>
+                    <li><a href="#">Nutrition</a></li>
+                    <li><a href="#">Early childhood development</a></li>
+                    <li><a href="#">Social and behaviour change</a></li>
+                    <li><a href="#">Education</a></li>
+                    <li><a href="#">Social policy</a></li>
+                    <li><a href="#">Gender</a></li>
+                    <li><a href="#">Water, sanitation and hygiene</a></li>
+                </ul>
+    
+                <!-- Clients Dropdown for Mobile -->
+                <a href="#">Clients</a>
+                <ul class="mobile-dropdown">
+                    <li><a href="#">Government Agencies</a></li>
+                    <li><a href="#">Non-Profit Organizations</a></li>
+                    <li><a href="#">Corporate Partners</a></li>
+                    <li><a href="#">Educational Institutions</a></li>
+                </ul>
+    
+                <!-- Contact Dropdown for Mobile -->
+                <a href="#">Contact</a>
+                <ul class="mobile-dropdown">
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Call Us</a></li>
+                    <li><a href="#">Visit Us</a></li>
+                    <li><a href="#">Feedback Form</a></li>
+                </ul>
+            </div>
+        </div>
+    
+      
+    <div class="homepage">
+        <img src="images/homepage.png" alt="Homepage Image">
+        <div class="homepage-text"><b>Welcome to OYOVO</b></div>
+        <div class="slider">
+            <div class="slide-track">
+                <!-- Slides -->
+                <div class="slide"><img src="./images/oneyouthonevoice (1).jpg" alt="Slide 1"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (10).jpg" alt="Slide 2"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (11).jpg" alt="Slide 3"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (12).jpg" alt="Slide 4"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (13).jpg" alt="Slide 5"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (14).jpg" alt="Slide 6"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (15).jpg" alt="Slide 7"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (16).jpg" alt="Slide 8"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (17).jpg" alt="Slide 9"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (18).jpg" alt="Slide 10"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (19).jpg" alt="Slide 11"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (20).jpg" alt="Slide 12"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (21).jpg" alt="Slide 13"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (22).jpg" alt="Slide 14"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (23).jpg" alt="Slide 15"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (24).jpg" alt="Slide 16"></div>
+                <div class="slide"><img src="./images/oneyouthonevoice (25).jpg" alt="Slide 17"></div>
+            </div>
+        </div>
+    </div>
+    <h1 style="color: #082953; padding: 0px; margin: 10px;"><b>OYOVO'S WORK</b></h1>
+    <p style="padding: 10px; margin-left: 220px; margin-right: 220px;">At One Youth One Voice, we believe in the power of young people to drive change. Through leadership training, mentorship, and skills development programs, we empower youth to become active citizens, entrepreneurs, and leaders in their communities.</p>
+    <p><strong>Join us in unlocking the potential of Malawi's youth.</strong></p>
+    <a href="#" style="background-color: #e604e6; border-radius: 10px; padding: 10px; color: #fff; text-decoration: none;">Learn more about our programs</a>
+    <div class="body2">
+        <div class="container">
+            <div class="card">
+                <h3><b>AIM</b></h3>
+                <div class="card-content">
+                    <p>To empower and unite the youth of Malawi in advocating for social, economic, and political change, fostering a culture of active citizenship and engagement that promotes sustainable development and equity.</p>
+                </div>
+                <div class="see-more" onclick="toggleContent(this)">See more</div>
+            </div>
+            <div class="card">
+                <h3><b>OUR GOALS</b></h3>
+                <div class="card-content">
+                    <ul>
+                        <li>
+                            <strong>Youth Empowerment:</strong> Equip young people with essential skills and knowledge through training programs, workshops, and mentorship opportunities that foster leadership, entrepreneurship, and civic engagement.
+                        </li>
+                        <li>
+                            <strong>Advocacy and Awareness:</strong> Raise awareness on critical issues affecting youth in Malawi, such as education, health, employment, and climate change, by organizing campaigns and community outreach programs.
+                        </li>
+                        <li>
+                            <strong>Policy Influence:</strong> Actively engage with policymakers and stakeholders to ensure youth perspectives are included in decision-making processes, particularly in areas that impact their futures.
+                        </li>
+                        <li>
+                            <strong>Community Development:</strong> Facilitate community-driven projects that address local challenges, promoting youth participation in initiatives that enhance social cohesion and economic growth.
+                        </li>
+                        <li>
+                            <strong>Networking and Collaboration:</strong> Build a strong network of youth organizations and groups across Malawi to foster collaboration, share resources, and amplify the collective voice for change.
+                        </li>
+                        <li>
+                            <strong>Research and Innovation:</strong> Conduct research to identify the needs and challenges of youth in Malawi, using findings to inform programs and influence policy, while promoting innovative solutions to local problems.
+                        </li>
+                        <li>
+                            <strong>Mental Health and Well-being:</strong> Promote mental health awareness and provide support systems for youth, addressing stigma and ensuring access to resources that contribute to overall well-being.
+                        </li>
+                        <li>
+                            <strong>Sustainable Development Goals (SDGs):</strong> Align organizational initiatives with the United Nations Sustainable Development Goals, empowering youth to contribute to global efforts for sustainable development and social justice.
+                        </li>
+                    </ul>
+                </div>
+                <div class="see-more" onclick="toggleContent(this)">See more</div>
+            </div>
+            
+                </div>
+              
+            </div>
+            
+            <div class="card">
+                <h3><b>Objectives</b></h3>
+                <div class="card-content">
+                   
+
+                    <h5>Empowerment through Leadership Training</h5>
+                    <ul>
+                        <li>Develop Leadership Skills: Conduct workshops to enhance leadership competencies among youth.</li>
+                        <li>Mentorship Programs: Pair young leaders with experienced mentors in their fields of interest.</li>
+                        <li>Public Speaking Workshops: Offer training to improve communication and public speaking skills.</li>
+                        <li>Youth Councils: Establish youth councils to encourage civic engagement and decision-making.</li>
+                        <li>Conflict Resolution Training: Teach youth strategies for resolving conflicts peacefully.</li>
+                    </ul>
+                
+                    <h5>Mental Health Awareness and Support</h5>
+                    <ul>
+                        <li>Mental Health Workshops: Organize workshops to promote mental well-being and awareness.</li>
+                        <li>Peer Support Networks: Create peer support groups for sharing experiences and coping strategies.</li>
+                        <li>Stress Management Programs: Provide resources and training on stress management techniques.</li>
+                        <li>Access to Counseling Services: Facilitate access to professional mental health resources for youth.</li>
+                        <li>Mindfulness and Well-being Initiatives: Introduce mindfulness practices to improve emotional resilience.</li>
+                    </ul>
+                
+                    <h5>Charity Activities for Vulnerable Children and Youth</h5>
+                    <ul>
+                        <li>Fundraising Events: Organize events to raise funds for vulnerable children’s education and health.</li>
+                        <li>Volunteer Programs: Encourage youth to volunteer in shelters or community centers.</li>
+                        <li>School Supplies Drives: Collect and distribute school supplies to underprivileged children.</li>
+                        <li>Mentorship for Vulnerable Youth: Implement mentorship programs targeting at-risk youth.</li>
+                        <li>Health Camps: Organize health camps to provide free medical check-ups for vulnerable populations.</li>
+                    </ul>
+                
+                    <h5>Community Engagement and Social Responsibility</h5>
+                    <ul>
+                        <li>Community Service Projects: Initiate community service projects that address local needs.</li>
+                        <li>Awareness Campaigns: Launch campaigns on social issues affecting youth, such as bullying and substance abuse.</li>
+                        <li>Civic Education Programs: Educate youth on their rights and responsibilities as citizens.</li>
+                        <li>Sustainability Initiatives: Promote environmental awareness through community clean-up and tree-planting events.</li>
+                        <li>Cultural Exchange Programs: Facilitate cultural exchange initiatives to promote diversity and inclusion.</li>
+                    </ul>
+                
+                    <h5>Support for the Elderly</h5>
+                    <ul>
+                        <li>Elder Care Volunteer Programs: Encourage youth to volunteer in nursing homes or senior centers.</li>
+                        <li>Intergenerational Programs: Create initiatives that facilitate interactions between youth and the elderly to share knowledge and experiences.</li>
+                        <li>Health and Wellness Workshops: Organize workshops focused on physical and mental health for elderly individuals.</li>
+                        <li>Technology Training: Teach elderly individuals how to use technology to stay connected with family and friends.</li>
+                        <li>Advocacy for Elder Rights: Empower youth to advocate for the rights and needs of the elderly in their communities.</li>
+                    </ul>
+                
+                    <h5>Empowering Young Political Leaders</h5>
+                    <ul>
+                        <li>Political Engagement Programs: Organize training sessions on political processes and civic engagement for young leaders.</li>
+                        <li>Youth Political Forums: Create platforms for young political leaders to discuss and debate relevant issues.</li>
+                        <li>Policy Development Workshops: Equip youth with skills to develop and propose policies that impact their communities.</li>
+                        <li>Collaboration with Local Government: Facilitate partnerships between youth and local government to address community issues.</li>
+                        <li>Leadership in Social Movements: Support youth-led social movements by providing training and resources on advocacy.</li>
+                    </ul>
+                
+                </div>
+                <div class="see-more" onclick="toggleContent(this)">See more</div>
+            </div>
+        </div>
+    
+        <h1 style="color: #082953; padding: 0px; margin: 10px;"><b>OYOVO'S WORK</b></h1>
+        <p style="padding: 10px; margin-left: 220px; margin-right: 220px;">One Youth One Voice is deeply committed to supporting vulnerable communities, including orphans and children in need. Through targeted programs, we provide essential resources, education, and care to ensure these individuals have the opportunity to thrive and build a brighter future.</p>
+        <p><strong>Discover how we are making a difference in the lives of the most vulnerable.</strong></p>
+        <a href="#" style="background-color: #e604e6; border-radius: 10px; padding: 10px; color: #fff; text-decoration: none;">Explore our initiatives</a>
+    <div class="container6">
+        
+        <div class="container6">
+            <div class="box">
+                <img src="images/leadership.jpg" alt="Empowerment through Leadership Training">
+                <h5>Empowerment through Leadership Training</h5>
+                <p>OYOVO and partners have...</p>
+                <a href="#">Visit the page</a>
+            </div>
+            <div class="box">
+                <img src="images/metal.jpg" alt="Mental Health Awareness and Support">
+                <h5>Mental Health Awareness and Support</h5>
+                <p>Organize workshops to promote mental well-being and awareness.</p>
+                <a href="#">Visit the page</a>
+            </div>
+            <div class="box">
+                <img src="images/charity.jpg" alt="Charity Activities for Vulnerable Children and Youth">
+                <h5>Charity Activities for Vulnerable Children and Youth</h5>
+                <p>Organize events to raise funds for vulnerable children’s education and health.</p>
+                <a href="#">Visit the page</a>
+            </div>
+            <div class="box">
+                <img src="images/commuty.jpg" alt="Community Engagement and Social Responsibility">
+                <h5>Community Engagement and Social Responsibility</h5>
+                <p>Initiate community service projects that address local needs.</p>
+                <a href="#">See the full report</a>
+            </div>
+            <div class="box">
+                <img src="images/eldery.jpg" alt="Support for the Elderly">
+                <h5>Support for the Elderly</h5>
+                <p>Encourage youth to volunteer in nursing homes or senior centers.</p>
+                <a href="#">See the full report</a>
+            </div>
+            <div class="box">
+                <img src="images/political.jpg" alt="Empowering Young Political Leaders">
+                <h5>Empowering Young Political Leaders</h5>
+                <p>Organize training sessions on political processes and civic engagement for young leaders.</p>
+                <a href="#">See the full report</a>
+            </div>
+        </div>
+    </div>
+   
+    <h1 style="color: #082953; padding: 0px; margin: 10px;"><b>OYOVO'S WORK</b></h1>
+    <p style="padding: 10px; margin-left: 220px; margin-right: 220px;">One Youth One Voice is pioneering the <strong>Mega Farms under Cooperations</strong> initiative, a transformative project designed to empower youth-led agricultural cooperatives. By providing training, resources, and modern farming techniques, we aim to boost productivity, enhance food security, and create sustainable economic opportunities for young farmers across Malawi.</p>
+    <p><strong>Join us in revolutionizing agriculture and empowering the next generation of farmers.</strong></p>
+    <a href="#" style="background-color: #e604e6; border-radius: 10px; padding: 10px; color: #fff; text-decoration: none;">Learn more about Mega Farms</a>
+    </div>
+    <div class="container7">
+        <div class="box">
+            <img src="images/CHANGE.jpg" alt="Community Engagement and Social Responsibility">
+            <h5>Community Engagement and Social Responsibility</h5>
+            <p>Initiate community service projects that address local needs.</p>
+            <a href="#">See the full report</a>
+        </div>
+        <div class="box">
+            <img src="images/OPHARN.png" alt="Support for the Elderly">
+            <h5>Support for the Elderly</h5>
+            <p>Encourage youth to volunteer in nursing homes or senior centers.</p>
+            <a href="#">See the full report</a>
+        </div>
+        <div class="box">
+            <img src="images/FARM.jpg" alt="Empowering Young Political Leaders">
+            <h5>Empowering Young Political Leaders</h5>
+            <p>Organize training sessions on political processes and civic engagement for young leaders.</p>
+            <a href="#">See the full report</a>
+        </div>
+      
+    </div>
+<div class="w3-content w3-container w3-padding-64" id="contact">
+    <h3 class="w3-center">WHERE I WORK</h3>
+    <p class="w3-center"><em>I'd love your feedback!</em></p>
+  
+    <div class="w3-row w3-padding-32 w3-section">
+      <div class="w3-col m4 w3-container">
+        <img src="/w3images/map.jpg" class="w3-image w3-round" style="width:100%">
+      </div>
+      <div class="w3-col m8 w3-panel">
+        <div class="w3-large w3-margin-bottom">
+          <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
+          <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
+          <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+        </div>
+        <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-right w3-section" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <div class="w3-xlarge w3-section">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </div>
+    <p>Powered by <a href="" title="W3.CSS" target="_blank" class="w3-hover-text-green">oyovo</a></p>
+  </footer>
+   
+    <script>
+        function toggleContent(element) {
+            const card = element.parentElement;
+            const content = card.querySelector('.card-content');
+            const overlay = document.createElement('div');
+            overlay.className = 'fullscreen-overlay';
+            const fullscreenContent = document.createElement('div');
+            fullscreenContent.className = 'fullscreen-content';
+            fullscreenContent.innerHTML = content.innerHTML;
+            overlay.appendChild(fullscreenContent);
+            document.body.appendChild(overlay);
+
+            overlay.onclick = function() {
+                document.body.removeChild(overlay);
+            };
+        }
+
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+        // Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+            function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+    
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+    </script>
+</body>
+</html>
